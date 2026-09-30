@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>surat</title>
+    <title>Surat</title>
     <link rel="icon" type="image/x-icon" href="assets/images/krs.ico">
 
     <link rel="stylesheet" href="assets/css/surat.css">
@@ -15,7 +15,6 @@
 
     <div id="navbar-placeholder"></div>
 
-
     <div class="header">
         <h1>KEPOLISIAN NEGARA REPUBLIK SUKABUMI</h1>
         <p style="font-size: 20px; letter-spacing: 1.5px;"><strong>DAERAH JAWA TENGAH</strong></p>
@@ -24,11 +23,9 @@
                 (Solo), Jawa Tengah 57138.</i></p>
     </div>
 
-
-    <button class="accordion">Surat Penagkapan</button>
+    <button class="accordion">Surat Penangkapan</button>
     <div class="panel">
-        <button class="btn info" onclick="window.location.href='naon.html'">Joko Wikosasih (alias: Jokowi)
-        </button>
+        <button class="btn info" onclick="window.location.href='naon.html'">Joko Wikosasih (alias: Jokowi)</button>
     </div>
 
     <button class="accordion">Section 2</button>
@@ -40,38 +37,47 @@
     <div class="panel">
         <p>Lorem ipsum...</p>
     </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                const navElement = doc.querySelector('.topnav');
+                if (navElement) {
+                    document.getElementById('navbar-placeholder').innerHTML = navElement.outerHTML;
+                }
+            });
+
+        function pindahHalaman() {
+            window.location.href = 'naon.html';
+        }
+
+        function yetTheBug(pesan, data = null) {
+    const waktu = new Date().toLocaleTimeString();
+    if (data !== null) {
+        console.log(`[YET-DEBUG][${waktu}]:`, pesan, data);
+    } else {
+        console.log(`[YET-DEBUG][${waktu}]:`, pesan);
+    }
+}
+    </script>
 </body>
-
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-        });
-    }
-
-
-    fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            // Mengambil isi navbar.html, tapi kita hanya ambil bagian tag <div class="topnav"> nya saja
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(data, 'text/html');
-            const navContent = doc.querySelector('.topnav').outerHTML;
-            document.getElementById('navbar-placeholder').innerHTML = navContent;
-        });
-
-    function pindahHalaman() {
-        window.location.href = 'naon.html';
-    }
-</script>
 
 </html>
