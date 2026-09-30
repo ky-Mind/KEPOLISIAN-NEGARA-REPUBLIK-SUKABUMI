@@ -29,14 +29,17 @@
         <div class="container left">
             <div class="content">
                 <h2>2017</h2>
-                <h3>Asep Kuniawan</h3>
+                <h3 style="margin-bottom: -10px;">Pelantikan Kepala NKRS</h3>
+                <h3>Asep Kharisma Kuniawan</h3>
                 <p>Pendiri sekaligus Kepala NKRS (Negara Kesatuan Republik Sukabumi)</p>
             </div>
         </div>
         <div class="container right">
             <div class="content">
                 <h2>2016</h2>
-                <p>Berdirinya </p>
+                <h3 style="margin-bottom: -10px;">Pelantikan Wakil Kepala NKRS</h3>
+                <h3>Dadang Evendi Kuniawan</h3>
+                <p>Wakil Kepala NKRS (Negara Kesatuan Republik Sukabumi)</p>
             </div>
         </div>
     </div>
@@ -64,15 +67,15 @@
         }
 
 
-    fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            // Mengambil isi navbar.html, tapi kita hanya ambil bagian tag <div class="topnav"> nya saja
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(data, 'text/html');
-            const navContent = doc.querySelector('.topnav').outerHTML;
-            document.getElementById('navbar-placeholder').innerHTML = navContent;
-        });
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                // Mengambil isi navbar.html, tapi kita hanya ambil bagian tag <div class="topnav"> nya saja
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                const navContent = doc.querySelector('.topnav').outerHTML;
+                document.getElementById('navbar-placeholder').innerHTML = navContent;
+            });
     </script>
 
 </body>
