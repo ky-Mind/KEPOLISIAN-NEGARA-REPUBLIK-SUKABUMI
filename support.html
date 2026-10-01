@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAPOLRI REPUBLIK SUKABUMI</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/krs.ico">
+
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+
+</head>
+
+<body>
+
+    <div id="navbar-placeholder"></div>
+
+
+    <div class="header">
+        <h1>KEPOLISIAN NEGARA REPUBLIK SUKABUMI</h1>
+        <p style="font-size: 20px; letter-spacing: 1.5px;"><strong>DAERAH JAWA TENGAH</strong></p>
+        <p>RESOR KOTA BESOR SOLO / SEKTOR CISAAT GIGIR SAETIK</p>
+        <p style="font-size: 15px;"><i>Jl. Kutai Utara No.1, Kelurahan Sumber, Kecamatan Banjarsari, Kota Surakarta
+                (Solo), Jawa Tengah 57138.</i></p>
+    </div>
+
+    <div class="support">
+        <h1>Support</h1>
+        <h3>Halaman bantuan bagi warga yang ingin melapor secara online atau panduan alur pengurusan surat kehilangan/perizinan.</h3>
+        <p>Untuk informasi lebih lanjut, jangan ragu untuk menghubungi kami:</p>
+        <p>Email: info@kapolri-sukabumi.go.id</p>
+        <p>Telepon: (0271) 123456</p>
+        <p>Alamat: Jl. Kutai Utara No.1, Kelurahan Sumber, Kecamatan Banjarsari, Kota Surakarta (Solo), Jawa Tengah 57138.</p>
+        <p>Jam Operasional: Senin - Jumat, 08.00 - 17.00 WIB</p>
+    </div>
+
+    <script>
+
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        function filterFunction() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            div = document.getElementById("myDropdown");
+            a = div.getElementsByTagName("a");
+            for (i = 0; i < a.length; i++) {
+                txtValue = a[i].textContent || a[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    a[i].style.display = "";
+                } else {
+                    a[i].style.display = "none";
+                }
+            }
+        }
+
+
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                // Mengambil isi navbar.html, tapi kita hanya ambil bagian tag <div class="topnav"> nya saja
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                const navContent = doc.querySelector('.topnav').outerHTML;
+                document.getElementById('navbar-placeholder').innerHTML = navContent;
+            });
+    </script>
+
+</body>
+
+</html>
